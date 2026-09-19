@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "cloudfunctions_bucket" {
-  name                        = join("-", concat(["adopt-a-book-cf-bucket", terraform.workspace]))
+  name                        = join("-", concat(["organic-primer-509109-n8-cf-bucket", terraform.workspace]))
   provider                    = google
   location                    = var.region
   force_destroy               = true
