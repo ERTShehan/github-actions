@@ -1,6 +1,6 @@
 variable "project" {
   description = "The GCP project id"
-  default     = "adopt-a-book"
+  default     = "organic-primer-509109-n8"
   type        = string
 }
 
