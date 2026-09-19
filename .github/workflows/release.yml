@@ -23,6 +23,8 @@ jobs:
         service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
 
     - uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.7.4"
 
     - name: Terraform
       run: |
