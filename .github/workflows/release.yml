@@ -5,23 +5,28 @@ on:
     types:
       - "released"
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   terraform:
     name: terraform
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
+    - name: Authenticate to GCP
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+        service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
     - uses: hashicorp/setup-terraform@v3
+
     - name: Terraform
-      id: credentials
       run: |
-        # Get GCP credentials
-        echo "${KEY}" | base64 -d > ~/key.json
-        export GOOGLE_APPLICATION_CREDENTIALS=~/key.json
         cd terraform
-        terraform init && terraform validate 
+        terraform init && terraform validate
         terraform workspace new prod || terraform workspace select prod
         terraform apply -auto-approve
-      env:
-        KEY: ${{secrets.SERVICE_ACCOUNT}}
-        GOOGLE_APPLICATION_CREDENTIALS: ~/key.json
