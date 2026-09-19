@@ -1,8 +1,9 @@
 resource "google_storage_bucket" "cloudfunctions_bucket" {
-  name          = join("-", concat(["adopt-a-book-cf-bucket", terraform.workspace]))
-  provider      = google
-  location      = var.region
-  force_destroy = true
+  name                        = join("-", concat(["adopt-a-book-cf-bucket", terraform.workspace]))
+  provider                    = google
+  location                    = var.region
+  force_destroy               = true
+  uniform_bucket_level_access = true
 }
 
 data "archive_file" "weather_service_file" {
