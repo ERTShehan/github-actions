@@ -11,7 +11,7 @@ provider "google-beta" {
 terraform {
   required_version = "1.7.4"
   backend "gcs" {
-    bucket = "adopt-a-book-terraform-state"
+    bucket = "organic-primer-509109-n8-terraform-state"
     prefix = "terraform/edge"
   }
   required_providers {
