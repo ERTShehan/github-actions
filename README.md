@@ -12,7 +12,7 @@ A serverless Python API deployed to **Google Cloud Functions (v2)** using **Terr
   - `release.yml`: Handles production releases.
 - **Enhanced Security**: Keyless authentication to Google Cloud using Workload Identity Federation (OIDC) instead of vulnerable long-lived Service Account JSON keys.
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Language**: Python 3.11 (Functions Framework / Flask)
 - **Cloud Provider**: Google Cloud Platform (GCP)
